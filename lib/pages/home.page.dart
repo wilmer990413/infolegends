@@ -26,23 +26,53 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Noticias"),
+        backgroundColor: Colors.black,
+        title: Image.asset(
+          'web/icons/infolegends.png',
+          fit: BoxFit.contain,
+          height: 130.0,
+          width: 130.0,
+          alignment: Alignment.center,
+        ),
       ),
-      body: FutureBuilder(
-        future: champions,
-        builder: (context, snapshot) {
-          List<Widget> lista = [];
-          if (snapshot.hasData) {
-            snapshot.data?.forEach((element) {
-              lista.add(CardWidget(
-                champion: element,
-              ));
-            });
-            return ListView(children: lista);
-          } else {
-            return CircularProgressIndicator();
-          }
-        },
+      body: Column(
+        children: [
+          Expanded(
+              child: Container(
+                  color: Colors.black,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("CHAMPIONS",
+                          style: TextStyle(
+                              fontSize: 40,
+                              fontFamily: 'BeaufortforLOL-Bold',
+                              color: Color.fromARGB(197, 255, 200, 81))),
+                    ],
+                  ))),
+          Expanded(
+            flex: 7,
+            child: Container(
+              color: Colors.black,
+              child: FutureBuilder(
+                future: champions,
+                builder: (context, snapshot) {
+                  List<Widget> lista = [];
+                  if (snapshot.hasData) {
+                    snapshot.data?.forEach((element) {
+                      lista.add(CardWidget(
+                        champion: element,
+                      ));
+                    });
+                    return ListView(children: lista);
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                },
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

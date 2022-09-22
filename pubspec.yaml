@@ -54,6 +54,28 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets: 
+    - web/icons/
+  fonts:
+    - family: BeaufortforLOL-Bold
+      fonts:
+        - asset: fuentes/BeaufortforLOL-Bold.ttf
+
+    - family: BeaufortforLOL-BoldItalic
+      fonts:
+        - asset: fuentes/BeaufortforLOL-BoldItalic.ttf
+
+    - family: BeaufortforLOL-Heavy
+      fonts:
+        - asset: fuentes/BeaufortforLOL-Heavy.ttf
+
+    - family: BeaufortforLOL-HeavyItalic
+      fonts:
+        - asset: fuentes/BeaufortforLOL-HeavyItalic.ttf
+
+    - family: BeaufortforLOL-Medium
+      fonts:
+        - asset: fuentes/BeaufortforLOL-Medium.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

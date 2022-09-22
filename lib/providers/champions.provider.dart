@@ -4,8 +4,6 @@ import 'dart:convert';
 
 class ChampionProvider {
   Future<List<ChampionModel>> obtenerChampions() async {
-    // var fechaActual = new DateTime.now();
-    // String fechaEnvio = fechaActual.toString().substring(0, 10);
     List<ChampionModel> champions = [];
     var client = http.Client();
     try {
@@ -14,10 +12,8 @@ class ChampionProvider {
       var response = await client.get(url);
       var decodificarResponse =
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-      decodificarResponse["data"].forEach((item, value) =>
-          {print(value), champions.add(ChampionModel.fromJson(value))});
-      print("paso2");
-      print(champions);
+      decodificarResponse["data"].forEach(
+          (item, value) => {champions.add(ChampionModel.fromJson(value))});
       return champions;
     } finally {
       client.close();
