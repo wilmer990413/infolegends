@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                       );
                       listaDeListas.add(table);
                     }
-                    if (listaImpar.length != 0) {
+                    if (listaImpar.isNotEmpty) {
                       Widget itemfinal = Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Table(
@@ -99,7 +99,9 @@ class _HomePageState extends State<HomePage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CircularProgressIndicator(),
+                            const CircularProgressIndicator(
+                              color: Colors.grey,
+                            ),
                           ],
                         ),
                       ],
