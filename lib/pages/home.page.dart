@@ -66,7 +66,16 @@ class _HomePageState extends State<HomePage> {
                     });
                     return ListView(children: lista);
                   } else {
-                    return CircularProgressIndicator();
+                    return Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircularProgressIndicator(),
+                          ],
+                        ),
+                      ],
+                    );
                   }
                 },
               ),

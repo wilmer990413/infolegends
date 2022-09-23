@@ -17,8 +17,8 @@ class CardWidget extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () async {
-          championEspecif = championEspecificProvider
-              .obtenerChampionsEspecifico(champion.name);
+          championEspecif =
+              championEspecificProvider.obtenerChampionsEspecifico(champion.id);
           List list = await championEspecif;
           Navigator.push(
               context,
