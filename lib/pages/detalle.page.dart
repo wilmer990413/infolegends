@@ -176,42 +176,8 @@ class _DetallePageState extends State<DetallePage> {
                               fontSize: 25, fontFamily: 'BeaufortforLOL-Bold')),
                     ),
                     Text(
-                        championEspecific.passive["description"]
-                            .toString()
-                            .replaceAll("<physicalDamage>", "")
-                            .replaceAll("</physicalDamage>", "")
-                            .replaceAll("<passive>", "")
-                            .replaceAll("</passive>", "")
-                            .replaceAll("<magicDamage>", "")
-                            .replaceAll("</magicDamage>", "")
-                            .replaceAll("<scaleArmor>", "")
-                            .replaceAll("</scaleArmor>", "")
-                            .replaceAll("<scaleMR>", "")
-                            .replaceAll("</scaleMR>", "")
-                            .replaceAll("<mainText>", "")
-                            .replaceAll("</mainText>", "")
-                            .replaceAll("<status>", "")
-                            .replaceAll("</status>", "")
-                            .replaceAll("<i>", "")
-                            .replaceAll("</i>", "")
-                            .replaceAll("<speed>", "")
-                            .replaceAll("</speed>", "")
-                            .replaceAll("<spellName>", "")
-                            .replaceAll("</spellName>", "")
-                            .replaceAll("<keywordName>", "")
-                            .replaceAll("</keywordName>", "")
-                            .replaceAll("<font color='#9b0f5f'>", "")
-                            .replaceAll("<font color='#cccc00'>", "")
-                            .replaceAll("<font color='#FF9900'>", "")
-                            .replaceAll("<font color='#FFF673'>", "")
-                            .replaceAll("<font color='#669900'>", "")
-                            .replaceAll("<font color='#fe5c50'>", "")
-                            .replaceAll("<font color='#8484fb'>", "")
-                            .replaceAll("<font color='#ee91d7'>", "")
-                            .replaceAll("<font color='#BBFFFF'>", "")
-                            .replaceAll("<font color='#C200E1'>", "")
-                            .replaceAll("</font>", "")
-                            .replaceAll("<br>", " "),
+                        limipiarDescripHabilidad(
+                            championEspecific.passive["description"]),
                         textAlign: TextAlign.justify,
                         style: const TextStyle(
                             fontSize: 20, fontFamily: 'BeaufortforLOL-Bold')),
@@ -231,7 +197,9 @@ class _DetallePageState extends State<DetallePage> {
                           style: const TextStyle(
                               fontSize: 25, fontFamily: 'BeaufortforLOL-Bold')),
                     ),
-                    Text(championEspecific.spells[0]["description"],
+                    Text(
+                        limipiarDescripHabilidad(
+                            championEspecific.spells[0]["description"]),
                         textAlign: TextAlign.justify,
                         style: const TextStyle(
                             fontSize: 20, fontFamily: 'BeaufortforLOL-Bold')),
@@ -248,7 +216,9 @@ class _DetallePageState extends State<DetallePage> {
                     Text(championEspecific.spells[1]["name"],
                         style: const TextStyle(
                             fontSize: 25, fontFamily: 'BeaufortforLOL-Bold')),
-                    Text(championEspecific.spells[1]["description"],
+                    Text(
+                        limipiarDescripHabilidad(
+                            championEspecific.spells[1]["description"]),
                         textAlign: TextAlign.justify,
                         style: const TextStyle(
                             fontSize: 20, fontFamily: 'BeaufortforLOL-Bold')),
@@ -268,7 +238,9 @@ class _DetallePageState extends State<DetallePage> {
                           style: const TextStyle(
                               fontSize: 25, fontFamily: 'BeaufortforLOL-Bold')),
                     ),
-                    Text(championEspecific.spells[2]["description"],
+                    Text(
+                        limipiarDescripHabilidad(
+                            championEspecific.spells[2]["description"]),
                         textAlign: TextAlign.justify,
                         style: const TextStyle(
                             fontSize: 20, fontFamily: 'BeaufortforLOL-Bold')),
@@ -288,7 +260,9 @@ class _DetallePageState extends State<DetallePage> {
                           style: const TextStyle(
                               fontSize: 25, fontFamily: 'BeaufortforLOL-Bold')),
                     ),
-                    Text(championEspecific.spells[3]["description"],
+                    Text(
+                        limipiarDescripHabilidad(
+                            championEspecific.spells[3]["description"]),
                         textAlign: TextAlign.justify,
                         style: const TextStyle(
                             fontSize: 20, fontFamily: 'BeaufortforLOL-Bold')),
@@ -301,4 +275,44 @@ class _DetallePageState extends State<DetallePage> {
       ),
     );
   }
+}
+
+String limipiarDescripHabilidad(String descripHabilidad) {
+  descripHabilidad = descripHabilidad
+      .toString()
+      .replaceAll("<physicalDamage>", "")
+      .replaceAll("</physicalDamage>", "")
+      .replaceAll("<passive>", "")
+      .replaceAll("</passive>", "")
+      .replaceAll("<magicDamage>", "")
+      .replaceAll("</magicDamage>", "")
+      .replaceAll("<scaleArmor>", "")
+      .replaceAll("</scaleArmor>", "")
+      .replaceAll("<scaleMR>", "")
+      .replaceAll("</scaleMR>", "")
+      .replaceAll("<mainText>", "")
+      .replaceAll("</mainText>", "")
+      .replaceAll("<status>", "")
+      .replaceAll("</status>", "")
+      .replaceAll("<i>", "")
+      .replaceAll("</i>", "")
+      .replaceAll("<speed>", "")
+      .replaceAll("</speed>", "")
+      .replaceAll("<spellName>", "")
+      .replaceAll("</spellName>", "")
+      .replaceAll("<keywordName>", "")
+      .replaceAll("</keywordName>", "")
+      .replaceAll("<font color='#9b0f5f'>", "")
+      .replaceAll("<font color='#cccc00'>", "")
+      .replaceAll("<font color='#FF9900'>", "")
+      .replaceAll("<font color='#FFF673'>", "")
+      .replaceAll("<font color='#669900'>", "")
+      .replaceAll("<font color='#fe5c50'>", "")
+      .replaceAll("<font color='#8484fb'>", "")
+      .replaceAll("<font color='#ee91d7'>", "")
+      .replaceAll("<font color='#BBFFFF'>", "")
+      .replaceAll("<font color='#C200E1'>", "")
+      .replaceAll("</font>", "")
+      .replaceAll("<br>", " ");
+  return descripHabilidad;
 }
