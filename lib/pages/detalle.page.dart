@@ -180,6 +180,8 @@ class _DetallePageState extends State<DetallePage> {
                             .toString()
                             .replaceAll("<physicalDamage>", "")
                             .replaceAll("</physicalDamage>", "")
+                            .replaceAll("<passive>", "")
+                            .replaceAll("</passive>", "")
                             .replaceAll("<magicDamage>", "")
                             .replaceAll("</magicDamage>", "")
                             .replaceAll("<scaleArmor>", "")

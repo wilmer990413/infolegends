@@ -32,6 +32,7 @@ class CardWidget extends StatelessWidget {
             Image.network(
                 'http://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${champion.image}'),
             Text(champion.name,
+                textAlign: TextAlign.center,
                 style:
                     TextStyle(fontSize: 22, fontFamily: 'BeaufortforLOL-Bold')),
           ],

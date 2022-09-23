@@ -58,13 +58,41 @@ class _HomePageState extends State<HomePage> {
                 future: champions,
                 builder: (context, snapshot) {
                   List<Widget> lista = [];
+                  List<Widget> listaDeListas = [];
+                  List<Widget> listaImpar = [];
                   if (snapshot.hasData) {
                     snapshot.data?.forEach((element) {
                       lista.add(CardWidget(
                         champion: element,
                       ));
                     });
-                    return ListView(children: lista);
+                    if (lista.length % 4 != 0) {
+                      do {
+                        listaImpar.add(lista[lista.length - 1]);
+                        lista.removeAt(lista.length - 1);
+                      } while (lista.length % 4 != 0);
+                    }
+                    int longitug = 4;
+                    for (int i = 0; i < lista.length; i += longitug) {
+                      List<Widget> aux = lista.sublist(i, i + longitug);
+                      Widget table = Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Table(
+                          children: [TableRow(children: aux)],
+                        ),
+                      );
+                      listaDeListas.add(table);
+                    }
+                    if (listaImpar.length != 0) {
+                      Widget itemfinal = Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Table(
+                          children: [TableRow(children: listaImpar)],
+                        ),
+                      );
+                      listaDeListas.add(itemfinal);
+                    }
+                    return ListView(children: listaDeListas);
                   } else {
                     return Column(
                       children: [
