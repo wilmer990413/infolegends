@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:infolegends/providers/championEspecif.provider.dart';
 import '../models/champion.model.dart';
 import '../models/championEspecif.model.dart';
 
@@ -47,7 +46,7 @@ class _DetallePageState extends State<DetallePage> {
             Padding(
               padding: const EdgeInsets.all(8),
               child: Center(
-                child: Text("Historia",
+                child: Text("Lore",
                     style: const TextStyle(
                         color: Color.fromARGB(197, 255, 200, 81),
                         fontSize: 25,
@@ -93,7 +92,7 @@ class _DetallePageState extends State<DetallePage> {
             Padding(
               padding: const EdgeInsets.all(8),
               child: Center(
-                child: Text("Habilidades",
+                child: Text("Passive & Spells",
                     style: const TextStyle(
                         color: Color.fromARGB(197, 255, 200, 81),
                         fontSize: 25,

@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import '../models/champion.model.dart';
 import '../providers/champions.provider.dart';
+import '../providers/idioma.provider.dart';
 import '../widgets/card.widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,10 +16,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final championProvider = ChampionProvider();
+  final idiomasProvider = IdiomasProvider();
   late Future<List<ChampionModel>> champions;
+  late Future<List<String>> idiomas;
+  late String selectedIdioma = 'es_MX';
   @override
   void initState() {
-    champions = championProvider.obtenerChampions();
+    idiomas = idiomasProvider.obtenerIdiomas();
+    champions = championProvider.obtenerChampions(selectedIdioma);
     super.initState();
   }
 
@@ -34,6 +39,50 @@ class _HomePageState extends State<HomePage> {
           width: 130.0,
           alignment: Alignment.center,
         ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 10, right: 30),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                  color: Colors.white12,
+                  border: Border.all(color: Colors.black38, width: 3),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                        color: Color.fromRGBO(0, 0, 0, 0.57), blurRadius: 3)
+                  ]),
+              child: FutureBuilder(
+                  future: idiomas,
+                  builder: (context, snapshot) {
+                    return DropdownButton(
+                        menuMaxHeight: 200,
+                        alignment: Alignment.center,
+                        iconSize: 30,
+                        icon: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(Icons.language),
+                        ),
+                        value: selectedIdioma,
+                        items: snapshot.data
+                            ?.map((e) => DropdownMenuItem(
+                                value: e,
+                                child: Center(
+                                  child: Text(e,
+                                      style: TextStyle(
+                                          fontFamily: 'BeaufortforLOL-Bold',
+                                          color: Color.fromARGB(
+                                              197, 255, 200, 81))),
+                                )))
+                            .toList(),
+                        onChanged: (snapshot) => setState(() {
+                              selectedIdioma = snapshot.toString();
+                              champions = championProvider
+                                  .obtenerChampions(selectedIdioma);
+                            }));
+                  }),
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -63,8 +112,7 @@ class _HomePageState extends State<HomePage> {
                   if (snapshot.hasData) {
                     snapshot.data?.forEach((element) {
                       lista.add(CardWidget(
-                        champion: element,
-                      ));
+                          champion: element, idioma: selectedIdioma));
                     });
                     if (lista.length % 4 != 0) {
                       do {

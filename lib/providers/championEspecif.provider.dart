@@ -4,12 +4,12 @@ import '../models/championEspecif.model.dart';
 
 class ChampionEspecifProvider {
   Future<List<ChampionEspecifModel>> obtenerChampionsEspecifico(
-      String nameChampion) async {
+      String nameChampion, String idioma) async {
     List<ChampionEspecifModel> championEspecifico = [];
     var client = http.Client();
     try {
       var url = Uri.https('ddragon.leagueoflegends.com',
-          'cdn/12.18.1/data/es_MX/champion/' + nameChampion + '.json');
+          'cdn/12.18.1/data/$idioma/champion/' + nameChampion + '.json');
       var response = await client.get(url);
       var decodificarResponse =
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;

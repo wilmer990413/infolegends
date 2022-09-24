@@ -6,9 +6,10 @@ import '../pages/detalle.page.dart';
 import '../providers/championEspecif.provider.dart';
 
 class CardWidget extends StatelessWidget {
-  CardWidget({super.key, required this.champion});
+  CardWidget({super.key, required this.champion, required this.idioma});
   final championEspecificProvider = ChampionEspecifProvider();
   late Future<List<ChampionEspecifModel>> championEspecif;
+  late String idioma;
 
   ChampionModel champion;
   @override
@@ -17,8 +18,8 @@ class CardWidget extends StatelessWidget {
       padding: const EdgeInsets.all(1),
       child: GestureDetector(
         onTap: () async {
-          championEspecif =
-              championEspecificProvider.obtenerChampionsEspecifico(champion.id);
+          championEspecif = championEspecificProvider
+              .obtenerChampionsEspecifico(champion.id, idioma);
           List list = await championEspecif;
           Navigator.push(
               context,
