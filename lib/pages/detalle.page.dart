@@ -22,6 +22,8 @@ class _DetallePageState extends State<DetallePage> {
   bool spells2Flag = false;
   bool spells3Flag = false;
   bool spells4Flag = false;
+  bool blurd = true;
+  bool lore = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,11 +45,50 @@ class _DetallePageState extends State<DetallePage> {
                   'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg'),
             ),
             Padding(
-              padding: const EdgeInsets.all(15),
-              child: Text(championEspecific.lore,
-                  textAlign: TextAlign.justify,
-                  style: const TextStyle(
-                      fontSize: 20, fontFamily: 'BeaufortforLOL-Bold')),
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: Text("Historia",
+                    style: const TextStyle(
+                        color: Color.fromARGB(197, 255, 200, 81),
+                        fontSize: 25,
+                        fontFamily: 'BeaufortforLOL-Bold')),
+              ),
+            ),
+            Visibility(
+              visible: blurd,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    lore = true;
+                    blurd = false;
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text(championEspecific.blurb,
+                      textAlign: TextAlign.justify,
+                      style: const TextStyle(
+                          fontSize: 20, fontFamily: 'BeaufortforLOL-Bold')),
+                ),
+              ),
+            ),
+            Visibility(
+              visible: lore,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    lore = false;
+                    blurd = true;
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text(championEspecific.lore,
+                      textAlign: TextAlign.justify,
+                      style: const TextStyle(
+                          fontSize: 20, fontFamily: 'BeaufortforLOL-Bold')),
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8),

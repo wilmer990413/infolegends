@@ -72,6 +72,7 @@ class _HomePageState extends State<HomePage> {
                         lista.removeAt(lista.length - 1);
                       } while (lista.length % 4 != 0);
                     }
+                    listaImpar = listaImpar.reversed.toList();
                     int longitug = 4;
                     for (int i = 0; i < lista.length; i += longitug) {
                       List<Widget> aux = lista.sublist(i, i + longitug);
